@@ -1,10 +1,28 @@
 {
   "extends": [
     "@eslint/js",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vitest/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
+  "plugins": ["@typescript-eslint", "vitest"],
   "root": true,
-  "ignorePatterns": ["dist/**/*"]
+  "ignorePatterns": ["dist/**/*"],
+  "overrides": [
+    {
+      "files": ["**/*.test.ts"],
+      "env": {
+        "vitest": true,
+        "node": true
+      },
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
 }
