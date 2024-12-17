@@ -65,3 +65,9 @@
   - Issue: Package entry point not properly specified in package.json
   - Impact: Failing tests due to unresolved imports
   - Workaround: Waiting for package maintainers to fix exports configuration
+- [ ] @cloudflare/workers-types resolution
+  - Issue: TypeScript unable to find type definition file despite package being installed
+  - Error: "Cannot find type definition file for '@cloudflare/workers-types'"
+  - Impact: Build failing in CI environment
+  - Reproduction: Run `pnpm run build` after clean install
+  - Current Status: Investigating type resolution configuration
