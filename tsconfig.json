@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2020", "DOM", "WebWorker"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext"],
+    "types": ["@cloudflare/workers-types"],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
@@ -17,9 +18,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@cloudflare", "./src/types"],
-    "types": ["node", "@cloudflare/workers-types"]
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*.ts",

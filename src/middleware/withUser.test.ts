@@ -57,7 +57,7 @@ describe('withUser middleware', () => {
     expect(result).toBeInstanceOf(Response)
     if (result instanceof Response) {
       expect(result.status).toBe(401)
-      const data = await result.json()
+      const data = await result.json() as Record<string, string>
       expect(data.error).toBe('Unauthorized')
     }
   })
@@ -81,7 +81,7 @@ describe('withUser middleware', () => {
     expect(result).toBeInstanceOf(Response)
     if (result instanceof Response) {
       expect(result.status).toBe(401)
-      const data = await result.json()
+      const data = await result.json() as Record<string, string>
       expect(data.error).toBe('Unauthorized')
     }
   })
@@ -101,7 +101,7 @@ describe('withUser middleware', () => {
     expect(result).toBeInstanceOf(Response)
     if (result instanceof Response) {
       expect(result.status).toBe(401)
-      const data = await result.json()
+      const data = await result.json() as Record<string, string>
       expect(data.error).toBe('Unauthorized')
     }
   })

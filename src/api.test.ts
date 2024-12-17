@@ -48,7 +48,7 @@ describe('API', () => {
     expect(response).toBeInstanceOf(Response)
     if (response instanceof Response) {
       expect(response.status).toBe(200)
-      const data = await response.json()
+      const data = await response.json() as Record<string, boolean>
       expect(data).toEqual({ success: true })
     }
   })
@@ -63,7 +63,7 @@ describe('API', () => {
     expect(response).toBeInstanceOf(Response)
     if (response instanceof Response) {
       expect(response.status).toBe(200)
-      const data = await response.json()
+      const data = await response.json() as Record<string, string>
       expect(data).toEqual({ id: '123' })
     }
   })
@@ -83,7 +83,7 @@ describe('API', () => {
     expect(response).toBeInstanceOf(Response)
     if (response instanceof Response) {
       expect(response.status).toBe(200)
-      const data = await response.json()
+      const data = await response.json() as Record<string, string>
       expect(data).toEqual({ postId: '123', commentId: '456' })
     }
   })
@@ -102,7 +102,7 @@ describe('API', () => {
     expect(response).toBeInstanceOf(Response)
     if (response instanceof Response) {
       expect(response.status).toBe(200)
-      const data = await response.json()
+      const data = await response.json() as Record<string, string>
       expect(data).toEqual({ path: 'path/to/file.txt' })
     }
   })
@@ -142,7 +142,7 @@ describe('API', () => {
     expect(response).toBeInstanceOf(Response)
     if (response instanceof Response) {
       expect(response.status).toBe(401)
-      const data = await response.json()
+      const data = await response.json() as Record<string, string>
       expect(data.error).toBe('Unauthorized')
     }
   })

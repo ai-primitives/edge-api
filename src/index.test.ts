@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { API } from './index'
+import { json } from 'itty-router'
 
 describe('API', () => {
   it('should create a router instance with middleware support', () => {
@@ -11,9 +12,9 @@ describe('API', () => {
 
   it('should handle routes correctly', async () => {
     const api = API()
-    api.get('/', () => ({ hello: 'api' }))
+    api.get('/', () => json({ hello: 'api' }))
 
-    const response = await api.handle(new Request('http://localhost/'))
+    const response = await api.handle(new Request('http://localhost/'), { AUTH_SECRET: 'test-secret' })
     const data = await response.json()
     expect(data).toEqual({ hello: 'api' })
   })
