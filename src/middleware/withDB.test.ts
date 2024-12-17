@@ -129,6 +129,9 @@ describe('withDB middleware', () => {
         query: {},
       }) as ExtendedRequest
 
+      const dbResult = await dbMiddleware(mockRequest, mockEnv)
+      expect(dbResult).toBeUndefined()
+
       const result = await withUser(mockRequest, mockEnv)
       expect(result).toBeInstanceOf(Response)
       if (result instanceof Response) {
