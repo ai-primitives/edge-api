@@ -5,8 +5,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'miniflare',
-    poolOptions: {
-      threads: { singleThread: true }
+    environmentOptions: {
+      modules: true,
+      bindings: { AUTH_SECRET: 'test-secret' }
     }
   }
 })
