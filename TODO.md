@@ -58,3 +58,10 @@
   - [x] Added comprehensive type definitions for requests
   - [x] Enhanced itty-router type declarations
   - [x] Implemented proper type checking for middleware chain
+
+## Blockers
+
+- [ ] @mdxdb/fetch package resolution
+  - Issue: Package entry point not properly specified in package.json
+  - Impact: Failing tests due to unresolved imports
+  - Workaround: Waiting for package maintainers to fix exports configuration
