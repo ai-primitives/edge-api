@@ -1,17 +1,13 @@
 {
-  "name": "package-template",
+  "name": "edge-api",
   "version": "0.1.0",
-  "description": "A modern TypeScript package template with Vitest, Prettier, ESLint, and semantic versioning",
+  "description": "Edge API router with user authentication and database middleware",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "bin": {
-    "package-template": "bin/cli.js"
-  },
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
@@ -22,20 +18,28 @@
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [
-    "typescript",
-    "template",
-    "package",
-    "cli"
+    "edge",
+    "api",
+    "router",
+    "middleware",
+    "authentication",
+    "database"
   ],
   "author": "AI Primitives",
   "license": "MIT",
   "homepage": "https://mdx.org.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ai-primitives/package-template.git"
+    "url": "git+https://github.com/ai-primitives/edge-api.git"
   },
   "bugs": {
-    "url": "https://github.com/ai-primitives/package-template/issues"
+    "url": "https://github.com/ai-primitives/edge-api/issues"
+  },
+  "dependencies": {
+    "@auth/core": "^0.37.4",
+    "@mdxdb/fetch": "github:ai-primitives/mdxdb#main",
+    "itty-router": "^4.0.0",
+    "next-auth": "5.0.0-beta.25"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
@@ -43,6 +47,8 @@
     "@semantic-release/github": "^11.0.1",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.1",
+    "@types/itty-router-extras": "^0.4.3",
+    "@types/next-auth": "^3.15.0",
     "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",

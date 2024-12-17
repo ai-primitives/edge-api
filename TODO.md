@@ -1,44 +1,41 @@
-# Project Status and Tasks
+# Edge API Implementation Status
 
-## Setup and Configuration
-
-- [x] Initialize package with TypeScript configuration
-- [x] Set up Vitest for testing
-- [x] Configure ESLint and Prettier
-- [x] Set up basic project structure
-- [x] Create placeholder implementation and tests
+## Setup Tasks
+- [x] Initialize package.json with correct metadata
+- [x] Configure TypeScript
+- [x] Set up ESLint and Prettier
+- [x] Create initial source files structure
 - [x] Configure package.json with proper metadata
+- [ ] Set up GitHub Actions for CI/CD
 
-## Implementation
-- [x] Basic package structure
-  - [x] TypeScript configuration
-  - [x] Testing setup with Vitest
-  - [x] ESLint and Prettier configuration
-- [x] CLI functionality
-  - [x] Basic command-line interface
-  - [x] Version and help commands
-- [ ] Advanced features
-  - [ ] Additional CLI commands
-  - [ ] Extended test coverage
-  - [ ] Documentation examples
+## Implementation Tasks
+- [x] Create basic API wrapper around itty-router
+- [x] Implement withUser middleware using next-auth
+- [x] Implement withDB middleware using @mdxdb/fetch
+- [ ] Add comprehensive type definitions
+- [ ] Write unit tests for API wrapper
+- [ ] Write unit tests for middleware
+- [ ] Write integration tests
+- [ ] Add API documentation and examples
+
+## Testing Requirements
+- [ ] Test coverage for all components
+  - [ ] API wrapper tests
+  - [ ] withUser middleware tests
+  - [ ] withDB middleware tests
+  - [ ] Integration tests
+- [ ] Type safety verification
+- [ ] Build verification
+- [ ] Lint verification
 
 ## Documentation
-
-- [x] Create README with badges and usage instructions
-- [ ] Complete CONTRIBUTING.md guide
+- [ ] Add README with usage examples
 - [ ] Add API documentation
-- [ ] Add examples directory with usage examples
+- [ ] Add middleware documentation
+- [ ] Add contributing guidelines
 
 ## CI/CD
-
 - [ ] Set up GitHub Actions workflow
 - [ ] Configure semantic-release
 - [ ] Add test coverage reporting
 - [ ] Set up automated npm publishing
-
-## Future Enhancements
-
-- [ ] Add more comprehensive examples
-- [ ] Add changelog generation
-- [ ] Add pull request template
-- [ ] Add issue templates
