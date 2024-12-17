@@ -33,9 +33,9 @@
 
 ## Documentation
 
-- [ ] Add README with usage examples
-- [ ] Add API documentation
-- [ ] Add middleware documentation
+- [x] Add README with usage examples
+- [x] Add API documentation
+- [x] Add middleware documentation
 - [ ] Add contributing guidelines
 
 ## CI/CD
