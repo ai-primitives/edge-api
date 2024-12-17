@@ -1,10 +1,21 @@
 import { describe, it, expect } from 'vitest'
-import { add } from './index'
+import { API } from './index'
+import { json } from 'itty-router'
 
-describe('add', () => {
-  it('should add two numbers correctly', () => {
-    expect(add(2, 3)).toBe(5)
-    expect(add(-1, 1)).toBe(0)
-    expect(add(0, 0)).toBe(0)
+describe('API', () => {
+  it('should create a router instance with middleware support', () => {
+    const api = API()
+    expect(api).toBeDefined()
+    expect(typeof api.get).toBe('function')
+    expect(typeof api.all).toBe('function')
+  })
+
+  it('should handle routes correctly', async () => {
+    const api = API()
+    api.get('/', () => json({ hello: 'api' }))
+
+    const response = await api.handle(new Request('http://localhost/'), { AUTH_SECRET: 'test-secret' })
+    const data = await response.json()
+    expect(data).toEqual({ hello: 'api' })
   })
 })

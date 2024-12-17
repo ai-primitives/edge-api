@@ -1,9 +1,9 @@
-/**
- * A placeholder function that adds two numbers
- * @param a First number
- * @param b Second number
- * @returns The sum of a and b
- */
-export function add(a: number, b: number): number {
-  return a + b
-}
+export { API } from './api'
+export { error } from 'itty-router'
+export { withUser } from './middleware/withUser'
+export { withDB } from './middleware/withDB'
+
+// Types
+export type { RequestHandler, ExtendedRequest } from 'itty-router'
+export type { DatabaseProvider, CollectionProvider, Document } from '@mdxdb/fetch'
+export type { Session, User } from '@auth/core/types'
