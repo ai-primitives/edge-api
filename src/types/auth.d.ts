@@ -4,15 +4,12 @@ declare module '@auth/core' {
   export interface AuthConfig {
     secret: string | undefined
     trustHost?: boolean
-    providers?: any[]
+    providers?: Array<unknown>
   }
 
   export interface AuthSession {
     user?: User
   }
 
-  export function Auth(
-    request: Request,
-    config: AuthConfig
-  ): Promise<Response & { json(): Promise<AuthSession | null> }>
+  export function Auth(request: Request, config: AuthConfig): Promise<Response & { json(): Promise<AuthSession | null> }>
 }

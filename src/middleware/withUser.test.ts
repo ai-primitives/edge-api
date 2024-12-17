@@ -14,7 +14,7 @@ describe('withUser middleware', () => {
     vi.resetModules()
     vi.clearAllMocks()
     mockEnv = {
-      AUTH_SECRET: 'test-secret'
+      AUTH_SECRET: 'test-secret',
     }
   })
 
@@ -24,13 +24,13 @@ describe('withUser middleware', () => {
       ok: true,
       status: 200,
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      json: () => Promise.resolve({ user: mockUser } as AuthSession)
+      json: () => Promise.resolve({ user: mockUser } as AuthSession),
     } as Response & { json(): Promise<AuthSession | null> })
 
     const { withUser } = await import('./withUser')
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     const result = await withUser(mockRequest, mockEnv)
@@ -44,13 +44,13 @@ describe('withUser middleware', () => {
       ok: false,
       status: 401,
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      json: () => Promise.resolve({ error: 'Unauthorized' })
+      json: () => Promise.resolve({ error: 'Unauthorized' }),
     } as Response)
 
     const { withUser } = await import('./withUser')
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     const result = await withUser(mockRequest, mockEnv)
@@ -68,13 +68,13 @@ describe('withUser middleware', () => {
       ok: true,
       status: 200,
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      json: () => Promise.resolve({ user: null })
+      json: () => Promise.resolve({ user: null }),
     } as Response & { json(): Promise<AuthSession | null> })
 
     const { withUser } = await import('./withUser')
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     const result = await withUser(mockRequest, mockEnv)
@@ -93,7 +93,7 @@ describe('withUser middleware', () => {
     const { withUser } = await import('./withUser')
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     const result = await withUser(mockRequest, mockEnv)

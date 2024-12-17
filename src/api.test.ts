@@ -14,7 +14,7 @@ describe('API', () => {
     vi.resetModules()
     vi.clearAllMocks()
     mockEnv = {
-      AUTH_SECRET: 'test-secret'
+      AUTH_SECRET: 'test-secret',
     }
   })
 
@@ -33,18 +33,16 @@ describe('API', () => {
           ok: true,
           status: 200,
           headers: new Headers({ 'Content-Type': 'application/json' }),
-          json: () => Promise.resolve({ user: mockUser } as AuthSession)
-        } as Response & { json(): Promise<AuthSession | null> })
-      )
+          json: () => Promise.resolve({ user: mockUser } as AuthSession),
+        } as Response & { json(): Promise<AuthSession | null> }),
+      ),
     }))
 
     const { withUser } = await import('./middleware/withUser')
     const api = API()
     const mockRequest = new Request('https://example.com/test')
 
-    api
-      .all('*', withUser, withDB({ ns: 'https://db.example.com' }))
-      .get('/test', () => json({ success: true }))
+    api.all('*', withUser, withDB({ ns: 'https://db.example.com' })).get('/test', () => json({ success: true }))
 
     const response = await api.handle(mockRequest, mockEnv)
     expect(response).toBeInstanceOf(Response)
@@ -74,10 +72,12 @@ describe('API', () => {
     const api = API()
     const mockRequest = new Request('https://example.com/posts/123/comments/456')
 
-    api.get('/posts/:postId/comments/:commentId', ({ params = {} }) => json({
-      postId: params.postId ?? 'unknown',
-      commentId: params.commentId ?? 'unknown'
-    }))
+    api.get('/posts/:postId/comments/:commentId', ({ params = {} }) =>
+      json({
+        postId: params.postId ?? 'unknown',
+        commentId: params.commentId ?? 'unknown',
+      }),
+    )
 
     const response = await api.handle(mockRequest, mockEnv)
     expect(response).toBeInstanceOf(Response)
@@ -92,9 +92,11 @@ describe('API', () => {
     const api = API()
     const mockRequest = new Request('https://example.com/files/path/to/file.txt')
 
-    api.get('/files/:path+', ({ params = {} }) => json({
-      path: params.path ?? ''
-    }))
+    api.get('/files/:path+', ({ params = {} }) =>
+      json({
+        path: params.path ?? '',
+      }),
+    )
 
     const response = await api.handle(mockRequest, mockEnv)
     expect(response).toBeInstanceOf(Response)
@@ -125,18 +127,16 @@ describe('API', () => {
           ok: false,
           status: 401,
           headers: new Headers({ 'Content-Type': 'application/json' }),
-          json: () => Promise.resolve({ error: 'Unauthorized' })
-        } as Response & { json(): Promise<AuthSession | null> })
-      )
+          json: () => Promise.resolve({ error: 'Unauthorized' }),
+        } as Response & { json(): Promise<AuthSession | null> }),
+      ),
     }))
 
     const { withUser } = await import('./middleware/withUser')
     const api = API()
     const mockRequest = new Request('https://example.com/test')
 
-    api
-      .all('*', withUser)
-      .get('/test', () => json({ success: true }))
+    api.all('*', withUser).get('/test', () => json({ success: true }))
 
     const response = await api.handle(mockRequest, mockEnv)
     expect(response).toBeInstanceOf(Response)

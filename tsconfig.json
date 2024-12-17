@@ -19,7 +19,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types", "./src/types"],
-    "types": ["vitest/globals", "node", "@types/web"]
+    "types": ["vitest/globals", "node"]
   },
   "include": [
     "src/**/*.ts",

@@ -1,10 +1,7 @@
-import { error } from 'itty-router'
 import type { ExtendedRequest, RequestHandler } from 'itty-router'
 import { Auth } from '@auth/core'
 import type { AuthConfig, AuthSession } from '@auth/core'
-import type { User } from '@auth/core/types'
 import type { Env } from '../types/request'
-import { APIError } from '../types/errors'
 
 export const withUser = (async (request: ExtendedRequest, env: Env) => {
   try {
@@ -17,27 +14,17 @@ export const withUser = (async (request: ExtendedRequest, env: Env) => {
     const response = await Auth(request as unknown as Request, config)
 
     if (!response.ok) {
-      return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      )
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } })
     }
 
-    const session = await response.json() as AuthSession
+    const session = (await response.json()) as AuthSession
     if (!session?.user) {
-      return new Response(
-        JSON.stringify({ error: 'Unauthorized' }),
-        { status: 401, headers: { 'Content-Type': 'application/json' } }
-      )
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } })
     }
 
     request.user = session.user
     return undefined
-
-  } catch (err: unknown) {
-    return new Response(
-      JSON.stringify({ error: 'Unauthorized' }),
-      { status: 401, headers: { 'Content-Type': 'application/json' } }
-    )
+  } catch {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } })
   }
 }) as RequestHandler

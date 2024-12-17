@@ -9,11 +9,7 @@ declare module 'itty-router' {
     db?: DatabaseProvider
   }
 
-  export type RequestHandler = (
-    request: ExtendedRequest,
-    env: Env,
-    ...args: unknown[]
-  ) => Response | undefined | void | Promise<Response | undefined | void>
+  export type RequestHandler = (request: ExtendedRequest, env: Env, ...args: unknown[]) => Response | undefined | void | Promise<Response | undefined | void>
 
   export interface RouterOptions {
     base?: string

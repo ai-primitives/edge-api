@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type { DatabaseProvider } from '@mdxdb/fetch'
 import type { ExtendedRequest } from '../types/request'
 import type { Env } from '../types/request'
 import type { User } from '@auth/core/types'
@@ -15,7 +14,7 @@ describe('withDB middleware', () => {
     vi.resetModules()
     vi.clearAllMocks()
     mockEnv = {
-      AUTH_SECRET: 'test-secret'
+      AUTH_SECRET: 'test-secret',
     }
   })
 
@@ -26,7 +25,7 @@ describe('withDB middleware', () => {
 
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     await middleware(mockRequest, mockEnv)
@@ -39,7 +38,7 @@ describe('withDB middleware', () => {
     const middleware = withDB({ ns: 'https://db.example.com' })
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     const result = await middleware(mockRequest, mockEnv)
@@ -53,7 +52,7 @@ describe('withDB middleware', () => {
 
     const mockRequest = Object.assign(new Request('https://example.com'), {
       params: {},
-      query: {}
+      query: {},
     }) as ExtendedRequest
 
     await middleware(mockRequest, mockEnv)
@@ -72,7 +71,7 @@ describe('withDB middleware', () => {
         ok: true,
         status: 200,
         headers: new Headers({ 'Content-Type': 'application/json' }),
-        json: () => Promise.resolve({ user: mockUser } as AuthSession)
+        json: () => Promise.resolve({ user: mockUser } as AuthSession),
       } as Response & { json(): Promise<AuthSession | null> })
     })
 
@@ -82,7 +81,7 @@ describe('withDB middleware', () => {
       const dbMiddleware = withDB({ ns: namespace })
       const mockRequest = Object.assign(new Request('https://example.com'), {
         params: {},
-        query: {}
+        query: {},
       }) as ExtendedRequest
 
       const userResult = await withUser(mockRequest, mockEnv)
@@ -101,7 +100,7 @@ describe('withDB middleware', () => {
       const dbMiddleware = withDB({ ns: namespace })
       const mockRequest = Object.assign(new Request('https://example.com'), {
         params: {},
-        query: {}
+        query: {},
       }) as ExtendedRequest
 
       const dbResult = await dbMiddleware(mockRequest, mockEnv)
@@ -119,7 +118,7 @@ describe('withDB middleware', () => {
       vi.mocked(Auth).mockResolvedValue({
         ok: false,
         status: 401,
-        json: () => Promise.resolve({ error: 'Unauthorized' })
+        json: () => Promise.resolve({ error: 'Unauthorized' }),
       } as Response)
 
       const { withDB } = await import('./withDB')
@@ -127,7 +126,7 @@ describe('withDB middleware', () => {
       const dbMiddleware = withDB({ ns: namespace })
       const mockRequest = Object.assign(new Request('https://example.com'), {
         params: {},
-        query: {}
+        query: {},
       }) as ExtendedRequest
 
       const result = await withUser(mockRequest, mockEnv)
