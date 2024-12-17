@@ -1,9 +1,9 @@
-import { Router } from 'itty-router'
-export { error } from 'itty-router'
 export { API } from './api'
+export { error } from 'itty-router'
 export { withUser } from './middleware/withUser'
 export { withDB } from './middleware/withDB'
 
 // Types
-import type { RequestHandler } from 'itty-router'
-export type { RequestHandler }
+export type { RequestHandler, ExtendedRequest } from 'itty-router'
+export type { DatabaseProvider, CollectionProvider, Document } from '@mdxdb/fetch'
+export type { Session, User } from '@auth/core/types'

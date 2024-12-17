@@ -38,7 +38,7 @@
   "dependencies": {
     "@auth/core": "^0.37.4",
     "@mdxdb/fetch": "github:ai-primitives/mdxdb#main",
-    "itty-router": "^4.0.0",
+    "itty-router": "^4.2.2",
     "next-auth": "5.0.0-beta.25"
   },
   "devDependencies": {

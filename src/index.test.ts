@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { API, error } from './index'
+import { API } from './index'
 
 describe('API', () => {
   it('should create a router instance with middleware support', () => {
